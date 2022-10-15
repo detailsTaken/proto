@@ -1,0 +1,27 @@
+syntax="proto3";
+
+package proto;
+option go_package="/proto";
+
+service chatApp{
+	rpc enter (copy) returns (copy) {}
+    rpc send (mess) returns (response) {}
+    rpc receive (copy) returns (mess) {}
+}
+
+message mess{
+	message details{
+		string sender =1;
+		string receiver=2;
+		string message=3;
+	}
+	details msg=1;
+}
+
+message copy{
+	string chatDetails=1;
+}
+
+message response{
+	bool done=1;
+}
